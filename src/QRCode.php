@@ -48,6 +48,8 @@ class QRCode{
 	public const DATA_BYTE     = 0b0100;
 	/** @var int */
 	public const DATA_KANJI    = 0b1000;
+	/** @var int */
+	public const DATA_ECI      = 0b0111;
 
 	/**
 	 * References to the keys of the following tables:

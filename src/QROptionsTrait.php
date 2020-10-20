@@ -14,6 +14,8 @@
 
 namespace chillerlan\QRCode;
 
+use chillerlan\QRCode\Data\QRDataInterface;
+
 use function array_values, count, in_array, is_numeric, max, min, sprintf, strtolower;
 
 /**
@@ -211,6 +213,16 @@ trait QROptionsTrait{
 	 *   - IMAGE: [63, 127, 255] // R, G, B
 	 */
 	protected ?array $moduleValues = null;
+
+	/**
+	 * Use ECI (Extended Channel Interpretation), defaults to false.
+	 */
+	protected bool $eci = false;
+
+	/**
+	 * Set the ECI encoding, defaults to 0.
+	 */
+	protected int $eciEncoding = QRDataInterface::ECI_DEFAULT;
 
 	/**
 	 * clamp min/max version number

@@ -38,8 +38,15 @@ abstract class DatainterfaceTestAbstract extends TestCase{
 	 * @internal
 	 */
 	protected function setUp():void{
-		$this->dataInterface = $this->getDataInterfaceInstance(new QROptions(['version' => 4]));
+		$this->dataInterface = $this->getDataInterfaceInstance($this->getDataTestOptions());
 		$this->reflection    = new ReflectionClass($this->dataInterface);
+	}
+
+	/**
+	 * @internal
+	 */
+	protected function getDataTestOptions():QROptions{
+		return new QROptions(['version' => 4]);
 	}
 
 	/**

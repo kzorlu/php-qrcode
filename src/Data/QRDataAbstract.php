@@ -171,8 +171,15 @@ abstract class QRDataAbstract implements QRDataInterface{
 
 		$MAX_BITS = $this::MAX_BITS[$this->version][QRCode::ECC_MODES[$this->options->eccLevel]];
 
+		$this->bitBuffer->clear();
+
+		// add ECI
+		if($this->options->eci && $this instanceof Byte){
+			$this->bitBuffer->put(QRCode::DATA_ECI, 4);
+			$this->bitBuffer->put($this->options->eciEncoding, 8);
+		}
+
 		$this->bitBuffer
-			->clear()
 			->put($this->datamode, 4)
 			->put($this->strlen, $this->getLengthBits())
 		;
